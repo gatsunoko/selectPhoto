@@ -1,3 +1,11 @@
+- if @success.present?
+  %p
+    成功
+    = @success
+- if @fail.present?
+  %p
+    失敗
+    = @fail
 = form_tag(bulk_create_pictures_path) do |f|
   .field
     = label_tag :urls

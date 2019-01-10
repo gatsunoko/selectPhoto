@@ -62,7 +62,7 @@ class PicturesController < ApplicationController
       end
     end
 
-    redirect_to pictures_path
+    render 'bulk_new'
   end
 
   # PATCH/PUT /pictures/1
