@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  root 'pictures#index'
+  root 'home#index'
   get 'home/index'
   devise_for :users, controllers: { registrations: 'users/registrations',
                                     confirmations: 'users/confirmations',

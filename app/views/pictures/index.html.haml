@@ -25,10 +25,12 @@
         %td= picture.lose
         %td= picture.picture_present
         %td= link_to 'Show', picture
-        %td= link_to 'Edit', edit_picture_path(picture)
-        %td= link_to 'Destroy', picture, method: :delete, data: { confirm: 'Are you sure?' }
+        -if user_signed_in? && current_user.admin?
+          %td= link_to 'Edit', edit_picture_path(picture)
+          %td= link_to 'Destroy', picture, method: :delete, data: { confirm: 'Are you sure?' }
 
 %br
 
 = link_to 'New Picture', new_picture_path
-= link_to '一括登録', bulk_new_pictures_path
+-if user_signed_in? && current_user.admin?
+  = link_to '一括登録', bulk_new_pictures_path

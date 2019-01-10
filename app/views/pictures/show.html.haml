@@ -23,6 +23,7 @@
 .show_picture_area
   = image_tag(@picture.url + 'media/?size=l', class: 'show_picture', onError: "img_blank(#{@picture.id})")
 
-= link_to 'Edit', edit_picture_path(@picture)
-\|
+-if user_signed_in? && current_user.admin?
+  = link_to 'Edit', edit_picture_path(@picture)
+  \|
 = link_to 'Back', pictures_path

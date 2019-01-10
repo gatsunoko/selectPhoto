@@ -1,6 +1,14 @@
-%h1 Home#index
-%p Find me in app/views/home/index.html.erb
-- if user_signed_in?
-  = link_to 'ログアウト', destroy_user_session_path, method: :delete
-- else
-  = link_to 'ログイン', new_user_session_path
+.home_index
+  .link_area.text-center
+    .conflict
+      = link_to '投票', conflict_index_path, class: 'btn'
+    - if user_signed_in?
+      .entry
+        = link_to '登録', pictures_path, class: 'btn'
+  .rankings_area
+    %p ランキング
+    - @pictures.each.with_index(1) do |picture, i|
+      .picture
+        %p
+          = picture.rating
+        = link_to(image_tag(picture.url + 'media/?size=m'), picture_path(picture))

@@ -10,6 +10,8 @@
   %body
     #header
       .header_child
+        .link
+          = link_to '', root_path, class: 'home'
         - if user_signed_in?
           .link
             = link_to 'ログアウト', destroy_user_session_path, method: :delete

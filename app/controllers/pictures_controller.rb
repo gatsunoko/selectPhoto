@@ -1,7 +1,8 @@
 class PicturesController < ApplicationController
   before_action :set_picture, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!, only: [:index, :new, :create, :bulk_new, :bulk_create, :edit, :update, :destroy, :my_point_ranking, :my_histories]
-
+  before_action :is_admin, only: [:edit, :update, :destroy, :blank_pictures]
+  
   # GET /pictures
   # GET /pictures.json
   def index
