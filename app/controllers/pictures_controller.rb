@@ -1,5 +1,6 @@
 class PicturesController < ApplicationController
   before_action :set_picture, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_user!, only: [:index, :new, :create, :bulk_new, :bulk_create, :edit, :update, :destroy, :my_point_ranking, :my_histories]
 
   # GET /pictures
   # GET /pictures.json
@@ -25,16 +26,42 @@ class PicturesController < ApplicationController
   # POST /pictures.json
   def create
     @picture = Picture.new(picture_params)
+    @picture.url.sub!(/\?.*/, "")
+    @picture.user_id = current_user.id
 
     respond_to do |format|
       if @picture.save
-        format.html { redirect_to @picture, notice: 'Picture was successfully created.' }
+        format.html { redirect_to pictures_path, notice: 'Picture was successfully created.' }
         format.json { render :show, status: :created, location: @picture }
       else
         format.html { render :new }
         format.json { render json: @picture.errors, status: :unprocessable_entity }
       end
     end
+  end
+
+  def bulk_new
+  end
+
+  def bulk_create
+    #raise.params.inspect
+    urls = params[:urls]
+    urls = urls.gsub(/\r\n|\r|\n/, ",")#改行をカンマに変更
+    urls = urls.split(",")#ひとつの文字列だったspをカンマで区切って配列にする
+    @success = 0 #登録の成功した数をカウントする変数
+    @fail = 0 #登録の失敗した数をカウントする変数
+
+    urls.each do |url|
+      url.sub!(/\?.*/, "")
+      picture = Picture.new(url: url, user_id: current_user.id)
+      if picture.save
+        @success += 1 
+      else
+        @fail += 1
+      end
+    end
+
+    redirect_to pictures_path
   end
 
   # PATCH/PUT /pictures/1
@@ -61,14 +88,41 @@ class PicturesController < ApplicationController
     end
   end
 
+  def blank_pictures
+    @pictures = Picture.where(picture_present: false).order(id: :desc).page(params[:page]).per(20)
+    render 'index'
+  end
+
+  def point_ranking
+    pictures_array = Picture.all.order(rating: :desc).limit(100).offset(0).pluck(:id)
+    @pictures = Picture.where(id: pictures_array).order(rating: :desc).page(params[:page]).per(10)
+    render 'ranking'
+  end
+
+  def win_ranking
+    pictures_array = Picture.all.order(win: :desc).limit(100).offset(0).pluck(:id)
+    @pictures = Picture.where(id: pictures_array).order(win: :desc).limit(100).offset(0).page(params[:page]).per(10)
+    render 'ranking'
+  end
+
+  def my_point_ranking
+    pictures_array = UserPicture.where(user_id: current_user.id).order(rating: :desc).limit(100).offset(0).pluck(:id)
+    @pictures = UserPicture.where(id: pictures_array).order(rating: :desc).page(params[:page]).per(10)
+    render 'ranking'
+  end
+
+  def my_histories
+    pictures_array = UserPicture.where(user_id: current_user.id).where('win > ?', 0).order(voting_at: :desc).limit(100).offset(0).pluck(:id)
+    @pictures = UserPicture.where(id: pictures_array).order(voting_at: :desc).page(params[:page]).per(10)
+    render 'ranking'
+  end
+
   private
-    # Use callbacks to share common setup or constraints between actions.
     def set_picture
       @picture = Picture.find(params[:id])
     end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
     def picture_params
-      params.require(:picture).permit(:url, :rating, :user_id, :win, :lose, :picture_present)
+      params.require(:picture).permit(:url)
     end
 end

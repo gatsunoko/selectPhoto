@@ -1,0 +1,7 @@
+= form_tag(bulk_create_pictures_path) do |f|
+  .field
+    = label_tag :urls
+    %p 改行して複数のURLを同時に登録できます。
+    = text_area_tag :urls
+  .actions
+    = submit_tag
