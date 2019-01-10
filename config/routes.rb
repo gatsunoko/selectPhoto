@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
-  get 'home/index'
   root 'pictures#index'
+  get 'home/index'
   devise_for :users, controllers: { registrations: 'users/registrations',
                                     confirmations: 'users/confirmations',
                                     sessions: "users/sessions",
@@ -16,5 +16,9 @@ Rails.application.routes.draw do
       get :blank_pictures
     end
   end
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+
+  get 'conflict/index'
+  get 'conflict/elo'
+  get 'conflict/img_blank'
+  get 'conflict/result'
 end
