@@ -1,0 +1,71 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, or any plugin's
+ * vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+ */
+
+@import "reset";
+@import "styles/*";
+
+#header {
+  position: fixed;
+  top: 0;
+  left: 0;  
+  width: 100%;
+  height: 56px;
+  background: white;
+  z-index: 9000;
+  transition: .3s;
+  text-align: center;
+  .header_child {
+    width: 100%;
+    height: 100%;
+    max-width: 800px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;    
+  }
+}
+.contants {
+  width: 100%;
+  /*min-height: 100%;*/
+  margin: 0 auto;
+  background: #FAFAFA;
+  overflow: hidden;
+  padding-top: 56px;
+}
+
+.twitter_icon {
+  background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAQAAACROWYpAAAABGdBTUEAALGOfPtRkwAAACBjSFJNAAB6JQAAgIMAAPn/AACA6AAAdTAAAOpgAAA6lwAAF2+XqZnUAAAAAmJLR0QA/4ePzL8AAAAHdElNRQfiAxcDISimWgafAAABvUlEQVQ4y8WVPWhTYRSGn9sGhFJpKoIEwcVFpCotLkJboVNBlyCK4Kbopjg46yBYEQp2cSgiFcFCq0IdXBysHRQVQScphAxC1BLRKhp/Kn0cbmOu6f1CUgffbzkceOB8977v+SJZu9r+gW0K3sklXlKhwlNG2LbSzTKIgw5Ig3PQ1yZVcJ9bPelzR3DKoruD6LCfrVfF9+oDs1hQ592TimadM13PzHsCv6pa8pjRKviQv1LRZQu+dRaLf1o33F4HXzSs+27B6USj6Hn7EvB4EJ11o+DhuvaCtzxlv5vscDQIj4lg5M3UW71xzldB+IpIhiNcppvhOmNE5Mg1MM4HgAxjlPmCRC05cx4AZ2xd390h0sbUGhJRpBQH4w7TLcOPWYzHxs3ebmnobx6IfRCbYYNHfeJyk/Aju2I4zvMQu/jIUpNDT/BppRJxIBCAND20o2rfqovPNH3fvTXvV4t2T1tqAj6XTF0ygL2eddKFBuhVO0MwtnvcchC96/q/814ru9zvjD+D6DW76zdNhjySo4c+elkX+DnvuMA4P1b1vediw09U9ro96bsVO807kdhkNS35wlH7wzs9+m9v1W894bsvxinTMQAAACV0RVh0ZGF0ZTpjcmVhdGUAMjAxOC0wMy0yM1QwMzozMzo0MC0wNzowMJ1Dv8EAAAAldEVYdGRhdGU6bW9kaWZ5ADIwMTgtMDMtMjNUMDM6MzM6NDAtMDc6MDDsHgd9AAAAAElFTkSuQmCC");
+  display: inline-block;
+  background-size: contain;
+  width: 30px;
+  height: 30px;
+  border-radius: 5px;
+}
+.facebook_icon {
+  background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAC8AAAAuCAMAAACPpbA7AAAABGdBTUEAALGOfPtRkwAAACBjSFJNAAB6JQAAgIMAAPn/AACA6AAAdTAAAOpgAAA6lwAAF2+XqZnUAAABd1BMVEX////5+fvFzeGWpsxxh7the7VbdrNcd7Nmf7hogbl3i7yqtdDL0+RsgrladLGPnsK2wNladLJbdbNac7GPncLR1+ZbdbH9/v5yhrlbdbJZc7BXcq5Xca5Wb6uOnMDS2OVXcq9adbJUbqlRaqJPZ59PZ55NZp2LmLmjr8xYdLFgdaWhq8W5wNPCyNjV2uSJmMBXc69mfK3y9Pd5i7lYdLJWca2mscxtgrK8w9htgbJZc7JWcK3EytxugrRXc7HEy95vhbjFzeCElb6HmcSHmcVfeLN2i76FlsDU2OVUbalUbqrX3OdTbajt7vRUbKlXcrFWbqhTbKlXc7JWca9tgbFQaKJTbapUb6tWcrFVcK1Sa6eFlLlJX5RKYpdNZp5TbalWcrBQaaJLY5pJYZabpsHr7vLs7vNpfrG2vtXs7vL19vlsgLHDyttrf7FVcbBTbqvDydtVca9qfrFUcK9SbapUcK5SbKprgLLEyt1ug7dVca5UcK3///9Fb3rlAAAAAXRSTlMAQObYZgAAAAFiS0dEAIgFHUgAAAAHdElNRQfiChoRLxj+2NYPAAABLElEQVRIx2NgGAX0A4xMzCysbOwcnFzcxCjn4WWDAj5+IpQLCArBgLAIYeWiYkKkqBeXkAQrFZSSlpGRlSOoXl5BEQSklJRVVFXV1Amq15ACKddU0tLW0dXV1SOoXl8TpN7A0IiYkAQCYxOQelMzIpUzmEPUWxCr3tJKEAisbWil3tbOBAhM7YlV76AJUm/gSFilkzMQuLiClJtouoE4zu4eeNR7mmAAL2+S1Gv6+OJR72eFDvwDxPGoDwxCB8Eh+PwbGgYE4cF2IJURkSBOVDQ+9TGxQBAXn2AHBJGJSUBOcgo+9akgkJYOVh+ekQniZRGOhWyI+hzCKumjPjcvAgjyC2imvjABCMJGjPqi4jwgKBk86ksLgaCMZurLwerDKohVX1kFUl+NVl4BAN4OdmJIM3KLAAAAJXRFWHRkYXRlOmNyZWF0ZQAyMDE4LTEwLTI3VDAwOjQ3OjI0LTA3OjAwIHm6CgAAACV0RVh0ZGF0ZTptb2RpZnkAMjAxOC0xMC0yN1QwMDo0NzoyNC0wNzowMFEkArYAAAAASUVORK5CYII=");
+  display: inline-block;
+  background-size: contain;
+  width: 45px;
+  height: 45px;
+  border-radius: 5px;
+  background-color: white;
+}
+.google_icon {
+  background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACQAAAAkCAMAAADW3miqAAAABGdBTUEAALGOfPtRkwAAACBjSFJNAAB6JQAAgIMAAPn/AACA6AAAdTAAAOpgAAA6lwAAF2+XqZnUAAACHFBMVEX////86Ob2s67xioHtZlvsVkrqSTzqSz3sXFDubmPxhHv3t7L97ev3vrnvcmfqQzXua2D4w775zMjtZVruaF35zsr++fnyk4v0npf+/f398fDual7wfXP97u3tZFj5zMn++vrubWLyj4fuaV70oJn4yMT62db62NX0opvubGH50M361NH9/PvtY1Tzm5T+/PvzmZL967T0jxbqRzP80lj7vAX3pQ3sUy7++u/7vgz6tAfvaCbrT0L98/P95Jz6uwXyghvqRDT0pJ381GH2oiL+9vXL3fzN3vz7yDX80FBChfT6/P77wRr93YPq8f37vQv945rZ5vzO3/zc6P3u9P7XwDP1+vZ8qvdnnPZEhvT9/v6dsik2qFKd1ayXvPhblfX6vQzvuglwrjs0qFNBrV7z+fT7/P5ZlPWRuPj2z1PXuBNPqkiGy5mwzPrI3Pvx5amxtCE7qFCR0KLb6PxJifT5+/77/PtXt3GT0KP9/v3T4vxSj/TM6dRhu3nR69jg8uWEypdCnZpBhfBNjPTx9v5duXaZ06jE5c3W7dzQ69e138CZ06lwwYY1qFQ3n3hAiOOmxvn6/Po1pGE+jcxxo/bt9/A0p1Q7lapgmPXz9/7w+PJeunZXq5rn7/35/PqKzZzI59BZuHJEr2Gn2bS44MNmvX5Lsmel2LL3+/jm9Oqt3LqByZRauHNJsWU7q1lNsmh0w4mm2bTe8eP////leMNTAAAAAXRSTlMAQObYZgAAAAFiS0dEAIgFHUgAAAAHdElNRQfiChoRNDv1iWznAAABn0lEQVQ4y2NgQAKMTMwsrGzsHJxc3DwM2AEvHz8SEBDEokRImB8NiIiiKRET58cCJCSR1UhJ82MFMkhqZOWwq2GTR6hRUCSshkEJIa6soqqmrqqhiaFGC65EURsmpq2IqkZHF6ZGD8kz+gbIahgMjYwhagwYcAMTUzNzkBolPGosLE1Nraz5+W1s8SiyMwUCewdHJzxqGJxNwcDFFS7ihgbcGRg8IIo8Edq80IE3gw9EkS8eRX4M/hBFAXgUBRKjKIgY64KJcXgILAhCw+CKwmEgAqImMgoamNExsZhBGAdRFA+MlgRT08Sk5OSUVHQ1aekQRRlAdqZpVnYyEOSgK8qFOikPyM4vKEwGgyJUNcUlEDUlpUBOWXkyFFRUIqmpqoYaFAfm1sAUJdfWwZTUNzQ2QdQ0t0BEcuCqklvb2js6u7p7epOT+/rBiiZAtU2sTcYGJk0GqpniDTN8ajlWVdOme82YiXDlrNlYVSXPmYvs33nzsanpmYUWdAsWoitZtBgzpiqXLEVWsmz5CuyZYuWq1WvWrlu3fvaGjZuQxQECu8vlRp12UQAAACV0RVh0ZGF0ZTpjcmVhdGUAMjAxOC0xMC0yN1QwMDo1Mjo1OS0wNzowMGzMxlcAAAAldEVYdGRhdGU6bW9kaWZ5ADIwMTgtMTAtMjdUMDA6NTI6NTktMDc6MDAdkX7rAAAAAElFTkSuQmCC");
+  display: inline-block;
+  background-size: contain;
+  width: 45px;
+  height: 45px;
+  border-radius: 5px;
+}

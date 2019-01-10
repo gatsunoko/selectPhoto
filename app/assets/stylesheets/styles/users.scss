@@ -1,0 +1,48 @@
+// Place all the styles related to the Pictures controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.twitter_signed_link,
+.google_signed_link,
+.facebook_signed_link {
+  padding: 4px;
+  margin: 0 auto;
+  height: 60px;
+  border-radius: 0.25rem;
+  font-weight: 400;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: middle;
+  user-select: none;
+  border: 1px solid transparent;
+  font-size: 1rem;
+  line-height: 1.5;
+  border-radius: 0.25rem;
+  transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  p {
+    line-height: 100%;
+    display: inline;
+    padding-left: 10px;
+  }
+}
+.twitter_signed_link {
+  width: 90%;
+  max-width: 350px;
+  background-color: #00a0e8;
+  color: white;
+}
+.google_signed_link {
+  width: 90%;
+  max-width: 350px;
+  background-color: white;
+  color: black;
+}
+.facebook_signed_link {
+  width: 90%;
+  max-width: 350px;
+  background-color: #5773b2;
+  color: white;
+}

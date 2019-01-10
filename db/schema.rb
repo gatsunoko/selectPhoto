@@ -10,7 +10,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_01_09_074859) do
+ActiveRecord::Schema.define(version: 2019_01_09_233817) do
+
+  create_table "pictures", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "url"
+    t.integer "rating", default: 1500, null: false
+    t.integer "user_id"
+    t.integer "win", default: 0, null: false
+    t.integer "lose", default: 0, null: false
+    t.boolean "picture_present", default: true, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "email", default: "", null: false
