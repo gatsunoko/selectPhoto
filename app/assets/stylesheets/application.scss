@@ -15,6 +15,14 @@
 @import "reset";
 @import "styles/*";
 
+html {
+  height: 100%;
+}
+
+body {
+  height: 100%;
+  margin: 0;
+}
 #header {
   position: fixed;
   top: 0;
@@ -37,12 +45,12 @@
 }
 .contants {
   width: 100%;
-  /*min-height: 100%;*/
   margin: 0 auto;
   background: #FAFAFA;
   overflow: hidden;
   padding: 15px;
   padding-top: 56px;
+  box-sizing: border-box;
 }
 
 .home {

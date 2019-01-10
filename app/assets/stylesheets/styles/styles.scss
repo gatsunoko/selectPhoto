@@ -6,6 +6,30 @@
   border: 1px solid #2EFEF7;
   border-radius: 5%;
   text-decoration: none;
-  color: black;
+  color: #8181F7;
   background-color: #E0F8F7;
+  display: inline-block;
+  margin: 10px 0;
+}
+nav.pagination {
+  padding: 15px 0;
+  span a {
+    box-sizing: border-box;
+    padding: 5px;
+    border: 1px solid #00FFFF;
+    background-color: #CEF6F5;
+    text-align: center;
+    color: #8181F7;
+    text-decoration: none;
+    font-size: 18px;
+  }
+  span p {
+    box-sizing: border-box;
+    padding: 5px;
+    text-align: center;
+    color: black;
+    text-decoration: none;
+    font-size: 18px;
+    display: inline-block;
+  }
 }

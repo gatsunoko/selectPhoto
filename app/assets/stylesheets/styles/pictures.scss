@@ -2,6 +2,14 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+.picture_index {
+  .links {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+  }
+}
+
 .show_picture_area {
   /*width: 100%;*/
   position: relative;

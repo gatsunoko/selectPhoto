@@ -25,5 +25,6 @@
 
 -if user_signed_in? && current_user.admin?
   = link_to 'Edit', edit_picture_path(@picture)
+  = link_to 'Destroy', @picture, method: :delete, data: { confirm: 'Are you sure?' }
   \|
 = link_to 'Back', pictures_path

@@ -36,7 +36,7 @@ ja:
       more_pages:
         display_entries: '%{first}-%{last}件を表示中 / 合計%{total}件'
     submit:
-      article:
+      picture:
         create: '登録'
         update: '更新'
       user:

@@ -9,6 +9,8 @@
     %p ランキング
     - @pictures.each.with_index(1) do |picture, i|
       .picture
-        %p
-          = picture.rating
+        %p 
+          = "#{i + ((@pictures.current_page - 1) * 10)}位 #{picture.rating}ポイント"
         = link_to(image_tag(picture.url + 'media/?size=m'), picture_path(picture))
+    = page_entries_info @pictures
+    = paginate @pictures
