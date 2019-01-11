@@ -1,5 +1,5 @@
 .user_login
-  .col-12.my-3
+  .login_button
     = link_to(user_twitter_omniauth_authorize_path, class: 'twitter_signed_link') do
       %table{border: "0", width: "100%"}
         %tr
@@ -7,20 +7,20 @@
             %span.twitter_icon
           %th
             %p ツイッターで登録/ログイン
-  .col-12.my-3
+  .login_button
     = link_to(user_google_omniauth_authorize_path, class: 'google_signed_link') do
       %table{border: "0", width: "100%"}
         %tr
           %th
-            %span.google_icon        
+            %span.google_icon
           %th
             %p Googleで登録/ログイン
-  .col-12.my-3
+  .login_button
     = link_to(user_facebook_omniauth_authorize_path, class: 'facebook_signed_link') do
       %table{border: "0", width: "100%"}
         %tr
           %th
-            %span.facebook_icon        
+            %span.facebook_icon
           %th
             %p Facebookで登録/ログイン
 :css

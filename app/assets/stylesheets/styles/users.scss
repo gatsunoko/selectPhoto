@@ -2,6 +2,9 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+.login_button {
+  margin: 15px 0;
+}
 .twitter_signed_link,
 .google_signed_link,
 .facebook_signed_link {
@@ -33,16 +36,19 @@
   max-width: 350px;
   background-color: #00a0e8;
   color: white;
+  text-decoration: none;
 }
 .google_signed_link {
   width: 90%;
   max-width: 350px;
   background-color: white;
   color: black;
+  text-decoration: none;
 }
 .facebook_signed_link {
   width: 90%;
   max-width: 350px;
   background-color: #5773b2;
   color: white;
+  text-decoration: none;
 }

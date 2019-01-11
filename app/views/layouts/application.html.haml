@@ -1,6 +1,7 @@
 !!!
 %html
   %head
+    %meta{name: 'viewport', content: 'width=device-width, initial-scale=1, shrink-to-fit=no'}
     %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
     %title どっちの写真ショー
     = csrf_meta_tags
@@ -12,6 +13,9 @@
       .header_child
         .link
           = link_to '', root_path, class: 'home'
+        - if user_signed_in?
+          .link
+            = link_to '', pictures_path, class: 'post'          
         - if user_signed_in?
           .link
             = link_to 'ログアウト', destroy_user_session_path, method: :delete

@@ -7,5 +7,33 @@
     display: flex;
     justify-content: space-around;
     align-items: center;
+    .conflict {
+      padding: 10px;
+      border: 1px solid #F2F2F2;
+      border-radius: 5px;
+      background-color: #FAFAFA;
+      -webkit-filter:drop-shadow(5px 5px 10px rgba(0, 0, 0, 0.2));
+      -moz-filter:drop-shadow(5px 5px 10px rgba(0, 0, 0, 0.2));
+      -ms-filter:drop-shadow(5px 5px 10px rgba(0, 0, 0, 0.2));
+      filter:drop-shadow(5px 5px 10px rgba(0, 0, 0, 0.2));
+      * {
+        text-decoration: none;
+      }
+      p.description {
+        font-size: 0.8rem;
+        color: red;
+      }
+    }
+  }
+  .rankings_area {
+    p.title {
+      font-size: 1.2rem;
+      font-weight: bold;
+    }
+    .picture {
+      p {
+        font-size: 1rem;
+      }
+    }
   }
 }

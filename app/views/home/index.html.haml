@@ -1,12 +1,12 @@
 .home_index
+  .top_text.w100.text-center
+    %h1 ○○○○見た目だけ総選挙
   .link_area.text-center
     .conflict
       = link_to '投票', conflict_index_path, class: 'btn'
-    - if user_signed_in?
-      .entry
-        = link_to '登録', pictures_path, class: 'btn'
+      %p.description ２枚の写真が表示されるので、かわいいと思ったほうをクリック！
   .rankings_area
-    %p ランキング
+    %p.title ランキング
     - @pictures.each.with_index(1) do |picture, i|
       .picture
         %p 
