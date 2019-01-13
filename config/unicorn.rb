@@ -2,7 +2,7 @@
 # set lets
 $worker  = 2
 $timeout = 120
-$app_dir = "/home/ec2-user/mySpot/"
+$app_dir = "/home/ec2-user/selectPhoto/"
 $listen  = File.expand_path 'tmp/sockets/.unicorn.sock', $app_dir
 $pid     = File.expand_path 'tmp/pids/unicorn.pid', $app_dir
 $std_log = File.expand_path 'log/unicorn.log', $app_dir

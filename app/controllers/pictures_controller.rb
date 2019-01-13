@@ -6,7 +6,8 @@ class PicturesController < ApplicationController
   # GET /pictures
   # GET /pictures.json
   def index
-    @pictures = Picture.all.order(id: :desc).page(params[:page]).per(20)
+    page_number = params[:page_number].present? ? params[:page_number] : params[:page]
+    @pictures = Picture.all.order(id: :desc).page(page_number).per(20)
   end
 
   # GET /pictures/1
@@ -83,10 +84,13 @@ class PicturesController < ApplicationController
   # DELETE /pictures/1.json
   def destroy
     @picture.destroy
-    respond_to do |format|
-      format.html { redirect_to pictures_url, notice: 'Picture was successfully destroyed.' }
-      format.json { head :no_content }
-    end
+
+    @pictures = Picture.all.order(id: :desc).page(params[:page_number]).per(20)
+    redirect_to pictures_path(page_number: params[:page_number])
+    # respond_to do |format|
+    #   format.html { redirect_to pictures_url, notice: 'Picture was successfully destroyed.' }
+    #   format.json { head :no_content }
+    # end
   end
 
   def blank_pictures
