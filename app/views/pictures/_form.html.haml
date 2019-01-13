@@ -9,5 +9,8 @@
   .field
     = f.label :url
     = f.text_field :url
+  .field
+    = f.label :picture_present
+    = f.radio_button :picture_present, true
   .actions
     = f.submit 'Save'

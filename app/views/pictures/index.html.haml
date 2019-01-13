@@ -2,11 +2,14 @@
   .links
     = link_to 'ひとつ登録', new_picture_path, class: 'btn'
     = link_to '一括登録', bulk_new_pictures_path, class: 'btn'
+    - if user_signed_in? && current_user.admin?
+      =link_to '非表示の画像', blank_pictures_pictures_path, class: 'btn'
   %ul.pictures
     - @pictures.each do |picture|
       = link_to picture do
         %li.picture
           = link_to(image_tag(picture.url + 'media/?size=m'), picture_path(picture))
-          = link_to 'Destroy', picture_path(picture, page_number: @pictures.current_page), method: :delete, data: { confirm: 'Are you sure?' }
+          - if user_signed_in? && current_user.admin?
+            = link_to 'Destroy', picture_path(picture, page_number: @pictures.current_page), method: :delete, data: { confirm: 'Are you sure?' }
     = page_entries_info @pictures
     = paginate @pictures

@@ -18,6 +18,7 @@ Devise.setup do |config|
                   scope: 'email',
                   info_fields: 'email, name',
                   callback_url: "#{ENV['SITE_URL']}/users/auth/facebook/callback"
+  OmniAuth.config.logger = Rails.logger
   # The secret key used by Devise. Devise uses this key to generate
   # random tokens. Changing this key will render invalid all existing
   # confirmation, reset password and unlock tokens in the database.

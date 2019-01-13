@@ -7,6 +7,10 @@
 %p
   %b Lose:
   = @picture.lose
+-if user_signed_in? && current_user.admin?
+  %p
+    %b picture_present:
+    = @picture.picture_present
 = link_to 'インスタでみる', @picture.url, target: '_blank'
 .show_picture_area
   = image_tag(@picture.url + 'media/?size=l', class: 'show_picture', onError: "img_blank(#{@picture.id})")
