@@ -4,6 +4,11 @@ class ConflictController < ApplicationController
 
   def index
     set_picture
+    if @conflict.blank?
+      @conflict = Conflict.create(picture_1: @picture1.id, picture_2: @picture2.id, count: 0)
+    end
+    @conflict_id = @conflict.id
+
     next_picture
     @count = 0
     session[:voting_id] = Array.new
@@ -18,6 +23,14 @@ class ConflictController < ApplicationController
 
       session[:voting_id].push(winer.id)
 
+      @conflict = Conflict.find params[:conflict_id]
+
+      #CSRFで表示されていない画像のIDを送ってきたらエラーを起こす
+      if (@conflict.picture_1.to_i != params[:win].to_i && @conflict.picture_2.to_i != params[:win].to_i) &&
+      (@conflict.picture_1.to_i  != params[:lose].to_i  || @conflict.picture_2.to_i  != params[:lose].to_i )
+        raise
+      end
+
       win.wins_from(lose)
       lose.loses_from(win)
 
@@ -31,6 +44,8 @@ class ConflictController < ApplicationController
       @picture1 = Picture.find params[:next1]
       @picture2 = Picture.find params[:next2]
 
+      @conflict.update(picture_1: @picture1.id, picture_2: @picture2.id, count: @conflict.count + 1)
+
       while @picture1.picture_present == false || @picture2.picture_present == false
         set_picture
       end
@@ -40,7 +55,8 @@ class ConflictController < ApplicationController
     next_picture
 
     @count = params[:count].to_i + 1
-    if @count >= 10
+    if @count >= 10 || @conflict.count >= 10
+      @conflict.destroy
       respond_to do |format|
         format.js { render ajax_redirect_to(conflict_result_path) }
       end
@@ -70,6 +86,12 @@ class ConflictController < ApplicationController
       begin
         @picture2 = Picture.find( Picture.where(picture_present: true).pluck(:id).sample )
       end while @picture1.id == @picture2.id
+
+      if params[:conflict_id].present?
+        @conflict = Conflict.find params[:conflict_id]
+        @conflict_id = @conflict.id
+        @conflict.update(picture_1: @picture1.id, picture_2: @picture2.id)
+      end
     end
 
     def next_picture
@@ -77,5 +99,10 @@ class ConflictController < ApplicationController
       begin
         @next2 = Picture.find( Picture.where(picture_present: true).pluck(:id).sample )
       end while @next1.id == @next2.id
+
+      if params[:conflict_id].present?
+        @conflict = Conflict.find params[:conflict_id]
+        @conflict_id = @conflict.id
+      end
     end
 end

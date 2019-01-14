@@ -1,9 +1,9 @@
 .card1_area
   = link_to(image_tag(@picture1.url + 'media/?size=l', class: 'card1', onError: "img_blank(#{@picture1.id})"),  |
-    conflict_elo_path(win: @picture1.id, lose: @picture2.id, next1: @next1.id, next2: @next2.id, count: @count), remote: true) |
+    conflict_elo_path(conflict_id: @conflict_id, win: @picture1.id, lose: @picture2.id, next1: @next1.id, next2: @next2.id, count: @count), remote: true) |
 .card2_area
   = link_to(image_tag(@picture2.url + 'media/?size=l', class: 'card2', onError: "img_blank(#{@picture2.id})"),  |
-    conflict_elo_path(win: @picture2.id, lose: @picture1.id, next1: @next1.id, next2: @next2.id, count: @count), remote: true) |
+    conflict_elo_path(conflict_id: @conflict_id, win: @picture2.id, lose: @picture1.id, next1: @next1.id, next2: @next2.id, count: @count), remote: true) |
 .next_picture
   = image_tag(@next1.url + 'media/?size=l', class: 'next_picture1', onError: "img_blank(#{@next1.id})")
   = image_tag(@next2.url + 'media/?size=l', class: 'next_picture2', onError: "img_blank(#{@next2.id})")
