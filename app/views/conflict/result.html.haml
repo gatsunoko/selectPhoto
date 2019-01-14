@@ -1,3 +1,6 @@
+.w100.text-center
+  .conflict
+    = link_to '再投票', conflict_index_path, class: 'btn'
 .rankings_area
   %p 投票した写真
   - @pictures.each.with_index(1) do |picture, i|
