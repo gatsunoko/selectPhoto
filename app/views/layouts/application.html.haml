@@ -8,14 +8,15 @@
     = csp_meta_tag
     = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
     = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
+    %link{href: "https://use.fontawesome.com/releases/v5.6.1/css/all.css", rel: "stylesheet"}
   %body
     #header
       .header_child
-        .link
-          = link_to '', root_path, class: 'home'
+        .link{style: 'font-size: 2.5em;'}
+          = link_to '', root_path, class: 'home fas fa-home'
         - if user_signed_in?
-          .link
-            = link_to '', pictures_path, class: 'post'          
+          .link{style: 'font-size: 2.5em;'}
+            = link_to '', pictures_path, class: 'post far fa-plus-square'          
         - if user_signed_in?
           .link
             = link_to 'ログアウト', destroy_user_session_path, method: :delete
